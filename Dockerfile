@@ -1,14 +1,11 @@
-# Use the official lightweight Python image
 FROM python:3.12-slim
 
-# Set working directory inside container
 WORKDIR /app
 
-# Copy your Python script into the container
-COPY quote_of_the_day.py .
+COPY app.py .
 
-# Install required packages
-RUN pip install --no-cache-dir requests
+RUN pip install --no-cache-dir flask requests
 
-# Run the script
-CMD ["python", "quote_of_the_day.py"]
+EXPOSE 5000
+
+CMD ["python", "app.py"]
